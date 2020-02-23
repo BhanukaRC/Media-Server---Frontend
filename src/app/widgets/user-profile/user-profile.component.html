@@ -1,0 +1,77 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8" *ngIf="logged">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Edit Profile</h5>
+        </div>
+        <div class="card-body">
+          <form ngNativeValidate>
+            <div class="row">
+              <div class="col-md-5 pr-1">
+                <div class="form-group">
+                  <label>User ID </label>
+                  <input type="text" class="form-control" disabled="" placeholder="Company" [value]="loggedUser.id" >
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Username</label><span class="required"></span>
+                  <input type="text" class="form-control" placeholder="Username" [(ngModel)]="tempUser.username" (keyup)="usernameCheck()" [ngModelOptions]="{standalone: true}" required>
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label for="email">Email address</label><span class="required"></span>
+                  <input name="email" id="email" type="email" class="form-control" placeholder="Email" (keyup)="emailCheck()" [(ngModel)]="tempUser.email" [ngModelOptions]="{standalone: true}" required>
+                </div>
+              </div>
+            </div>
+            <div class="card card-user">
+              <div class="image">
+                <img src="../assets/img/bg5.jpg" alt="...">
+              </div>
+              <div class="card-body">
+                <div class="author">
+                  <a href="#">
+                    <img class="avatar border-gray" src="../assets/img/mike.jpg" alt="...">
+                    <h5 class="title">{{loggedUser.username}}</h5>
+                  </a>
+                  <p class="description">
+                    {{loggedUser.email}}
+                  </p>
+                </div>
+                <p class="description text-center">
+                 "This is for user description"
+                </p>
+              </div>
+              <hr>
+              <div class="button-container">
+                <button class="btn btn-neutral btn-icon btn-round btn-lg">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="btn btn-neutral btn-icon btn-round btn-lg">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button  class="btn btn-neutral btn-icon btn-round btn-lg">
+                  <i class="fab fa-google-plus-g"></i>
+                </button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="submit" value="Submit" [disabled]=validity (click)="changeUserDetails()">
+                    </div>
+                  </div>
+                </div>    
+              </div>
+          </div>
+          </form>
+          <ngx-ui-loader></ngx-ui-loader>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

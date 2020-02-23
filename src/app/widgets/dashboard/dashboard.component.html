@@ -1,0 +1,112 @@
+<div class="panel-header panel-header-small">
+</div>
+
+<div class="main-content">
+  <!--div class="row">
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Email Statistics</h5>
+          <h4 class="card-title">24 Hours Performance</h4>
+        </div>
+        <div class="card-body">
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+          </div>
+        </div>
+      </div>
+    </div>
+  </div-->
+  <div class="row">
+    <div class="col-md-10" *ngIf="logged">
+      <div class="card" *ngIf="files.length > 0">
+        <div class="card-header">
+          <h5 class="card-category">Your Files List</h5>
+          <h4 class="card-title">Media Files</h4>
+          <ng-template #rt let-r="result" let-t="term">
+            <ngb-highlight [result]="r.fileName" [term]="t"></ngb-highlight>
+          </ng-template>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label>Search files by name</label>
+                <input [(ngModel)]="inputText" (selectItem)="typeaheadOnSelect($event.item)" (keyup)="onChange()"
+                  [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" class="form-control"
+                  placeholder="Search">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>File Type</label>
+                <select class="form-control" (change)="getType($event)" [(ngModel)]='typeSelect' >
+                  <option  class="form-control" [value]="null">Select by media type</option>
+                  <option *ngFor="let type of fileTypes" class="form-control" [value]="type">{{type}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div >
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  ID Number
+                </th>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Format
+                </th>
+                <th>
+                  Path
+                </th>
+                <th class="text-right">
+                  Size
+                </th>
+                <th class="text-center">
+                  Actions
+                </th>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let file of tempFiles | paginate: { itemsPerPage: 5, currentPage: p }">
+                  <td>
+                    {{file._id}}
+                  </td>
+                  <td>
+                    {{file.fileName}}
+                  </td>
+                  <td>
+                    {{file.fileType}}
+                  </td>
+                  <td>
+                    {{file.format}}
+                  </td>
+                  <td>
+                    {{file.path}} </td>
+                  <td class="text-right">
+                    {{file.size}}
+                  </td>
+                  <td class="text-center">
+                    <button class="button download" (click)="download(file)">Download</button>
+                    <button class="button delete" (click)="delete(file)">Delete</button>
+                    &nbsp;
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <ngx-ui-loader></ngx-ui-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

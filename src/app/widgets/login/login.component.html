@@ -1,0 +1,41 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content fadeInDown" ngNativeValidate>
+  <div class="row">
+    <div class="col-md-4 center">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Login</h5>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row fadeIn first col-md-12 form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" placeholder="Account Username" [(ngModel)]="loggedUser.username"  [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="row fadeIn second col-md-12 form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" placeholder="Account Password" [(ngModel)]="loggedUser.password" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="row fadeIn second col-md-12 form-group">
+             
+            </div>
+            <div class="row fadeIn third col-md-12 form-group">
+                  <input type="submit" value="Log In" (click)="getInputs()">
+            </div><div class="row fadeIn third col-md-12 form-group">
+             
+            </div>
+            <div class="row fadeIn fourth">
+              <div class="col-md-12">
+                <div id="formFooter">
+                  <a class="underlineHover" href="#">Forgot Password?</a>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ngx-ui-loader></ngx-ui-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content fadeInDown" ngNativeValidate>
+  <div class="row">
+    <div class="col-md-4 center">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Sign-up</h5>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row fadeIn first col-md-12 form-group">
+              <label>Username</label>
+              <input type="text" class="form-control" placeholder="Account Username" [(ngModel)]="username"
+                [ngModelOptions]="{standalone: true}" (keyup)="usernameCheck()" required>
+            </div>
+            <div class="row fadeIn first col-md-12 form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="Your email" [(ngModel)]="email"
+                [ngModelOptions]="{standalone: true}" (keyup)="emailCheck()" required>
+            </div>
+            <div class="row fadeIn second col-md-12 form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Account Password"
+                [(ngModel)]="password1" [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <div class="row fadeIn second col-md-12 form-group">
+              <label>Password Confirmation</label>
+              <input type="password" class="form-control" placeholder="Re-Enter the Password"
+                [(ngModel)]="password2" [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <div class="row fadeIn second col-md-12 form-group">
+            </div>
+            <div class="row fadeIn third col-md-12 form-group">
+              <input type="submit" value="Sign Up" (click)="getInputs()" >
+            </div>
+            <div class="row fadeIn third col-md-12 form-group">
+
+            </div>
+            <div class="row fadeIn fourth">
+              <div class="col-md-12">
+                <div id="formFooter">
+                  <a class="underlineHover" href="#">Forgot Password?</a>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ngx-ui-loader></ngx-ui-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

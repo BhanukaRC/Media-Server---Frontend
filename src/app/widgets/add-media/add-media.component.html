@@ -1,0 +1,71 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content col-md-8">
+  <div class="row">
+    <div class="col-md-8" *ngIf="logged">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Add New Media File</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup] = "mediaAddForm" (ngSubmit)="uploadFile(mediaAddForm.value)" ngNativeValidate>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>File Name</label><span class="required"></span>
+                  <input type="text" class="form-control required" placeholder="Name of the file" formControlName="mediaName" ngbTooltip="Directory names will be saved excluding white spaces" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>File Type</label>
+                  <select  class="form-control"  (change) = "getType($event)"  required>
+                    <option *ngFor = "let type of FileTypes" class="form-control" [value]="type">{{type}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>File Path</label><span class="required"></span>
+                  <input type="text" class="form-control" placeholder="Server side path of the file" formControlName="mediaPath" ngbTooltip="Insert path as subfolder1/subfolder2/">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>File Size</label>
+                  <input type="text" class="form-control" disabled="true" [value] = "fileSize" placeholder="File Size">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <label>Select File</label><span class="required"></span>
+                  <input class="form-control" (change)="onFileChange($event)" type="file">
+                  <input type="hidden" name="fileHidden" formControlName="uploadedFile"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">&nbsp;</div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button type="submit" >Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ngx-ui-loader></ngx-ui-loader>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
